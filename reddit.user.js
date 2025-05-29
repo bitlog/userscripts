@@ -4,6 +4,7 @@
 // @version	0.1
 // @author	bitlog
 // @namespace	bitlogUserscripts
+// @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit.user.js
 // @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit.user.js
 // @match	*://*.reddit.com/*
 // @match	*://preview.redd.it/*

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	reddit
 // @description	redirect reddit to old interface
-// @version	0.7
+// @version	0.8
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit.user.js
@@ -14,7 +14,6 @@
 
 if (location.hostname === "preview.redd.it") {
 	location.replace(location.protocol + "//i.redd.it" + location.pathname);
-} else if (location.hostname === "www.reddit.com" && !location.pathname.match(/^\/media\?url/i)) {
-	var oldReddit = location.protocol + "//old.reddit.com" + location.pathname + location.search + location.hash;
-	location.replace(oldReddit);
+} else if (location.hostname === "www.reddit.com" && !location.pathname.match(/^\/media/i)) {
+	location.replace(location.protocol + "//old.reddit.com" + location.pathname + location.search + location.hash);
 }

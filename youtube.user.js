@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube
 // @description	redirect youtube
-// @version	0.1
+// @version	0.2
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
@@ -12,7 +12,6 @@
 // ==/UserScript==
 
 // redirect shorts
-const videoId = location.pathname.match(/^\/shorts\/(.+)/)[1];
-if (videoId) {
-	location.replace(location.protocol + "//" + location.host + "/watch?v=" + ${videoId});
+if (location.pathname.match(/^\/shorts\//) {
+	location.replace(location.protocol + "//" + location.host + "/watch?v=" + location.pathname.match(/^\/shorts\/(.+)/)[1]);
 }

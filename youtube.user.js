@@ -1,24 +1,17 @@
 // ==UserScript==
 // @name	youtube
 // @description	redirect youtube
-// @version	0.5
+// @version	0.6
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
 // @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
 // @match	*://*.youtube.com/*
-// @run-at	document-start
+// @run-at	document-idle
 // @grant	none
 // ==/UserScript==
 
-function redirectYoutubeShorts() {
-	if (location.pathname.match(/^\/shorts/i)) {
-		location.replace(location.protocol + "//" + location.host + "/watch?v=" + location.pathname.replace(/^\/shorts\/\/watch?v=/i);
-	}
+// redirect shorts
+if (window.location.pathname.match(/^\/shorts/i)) {
+	window.location.replace(window.location.protocol + "//" + window.location.host + window.location.pathname.replace(/^\/shorts\/\/watch?v=/i);
 }
-// run script on in-page navigation
-document.addEventListener("yt-navigate-start", () => {
-	redirectYoutubeShorts();
-});
-// run script on page load
-redirectYoutubeShorts();

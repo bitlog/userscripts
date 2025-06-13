@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube
 // @description	redirect youtube
-// @version	0.4
+// @version	0.5
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
@@ -12,9 +12,8 @@
 // ==/UserScript==
 
 function redirectYoutubeShorts() {
-	const videoId = window.location.pathname.match(/^\/shorts\/(.+)/i)[1];
-	if (videoId) {
-		location.replace(location.protocol + "//" + location.host + "/watch?v=" + ${videoId});
+	if (location.pathname.match(/^\/shorts/i)) {
+		location.replace(location.protocol + "//" + location.host + "/watch?v=" + location.pathname.replace(/^\/shorts\/\/watch?v=/i);
 	}
 }
 // run script on in-page navigation

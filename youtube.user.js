@@ -13,7 +13,7 @@
 
 function shortsRedirectChecker() {
 	if (location.pathname.match(/^\/shorts\//i)) {
-		console.log("shorts page detected, redirecting...");
+		alert("shorts page detected, redirecting...");
 		location.replace(location.protocol + "//" + location.host + location.pathname.replace(/^\/shorts\/\/watch?v=/i);
 	}
 	setTimeout(shortsRedirectChecker, 500);

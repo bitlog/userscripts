@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	reddit
 // @description	redirect reddit to old interface
-// @version	0.11
+// @version	2025.07.14.1
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit.user.js

@@ -1,30 +1,36 @@
 // ==UserScript==
 // @name	youtube
 // @description	youtube userscript, including youtube shorts redirect
-// @version	0.11
+// @version	2025.07.14.1
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
 // @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
 // @match	*://*.youtube.com/*
-// @run-at	document-idle
+// @run-at	document-start
 // @grant	bitlogStyle
 // ==/UserScript==
 
-function shortsRedirectChecker() {
-	if (location.pathname.match(/^\/shorts\//i)) {
-		location.replace(location.protocol + "//" + location.host + location.pathname.replace(/^\/shorts\/\/watch?v=/i);
-	}
-	setTimeout(shortsRedirectChecker, 500);
+var oldHref = document.location.href;
+if (window.location.href.indexOf('youtube.com/shorts') > -1) {
+	window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
 }
-shortsRedirectChecker();
-
-bitlogStyle(`
-/* Remove shorts thumbnail in homepage and search */
-[is-shorts], [aria-label="Shorts"], #guide-button, [tab-title="Shorts"] {
-	display: none;
-}
-ytd-reel-shelf-renderer {
-	display: none;
-}
-`)
+window.onload = function() {
+	var bodyList = document.querySelector("body")
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (oldHref != document.location.href) {
+				oldHref = document.location.href;
+				console.log('location changed!');
+				if (window.location.href.indexOf('youtube.com/shorts') > -1) {
+					window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+				}
+			}
+		});
+	});
+	var config = {
+		childList: true,
+		subtree: true
+	};
+	observer.observe(bodyList, config);
+};

@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name	youtube
-// @description	youtube userscript, including youtube shorts redirect and auto-play disable
-// @version	2025.07.30.3
+// @description	youtube userscript, redirect shorts
+// @version	2025.07.30.4
 // @author	bitlog
 // @namespace	bitlogUserscripts
-// @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
-// @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
+// @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-shorts.user.js
+// @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-shorts.user.js
 // @match	*://*.youtube.com/*
 // @run-at	document-start
 // @grant	bitlogStyle
@@ -33,16 +33,3 @@ window.onload = function() {
 	};
 	observer.observe(bodyList, config);
 };
-
-function() {
-	'use strict';
-	function toggleAutoplayIfOn() {
-		let autoplayButton = document.getElementsByClassName('ytm-autonav-toggle-button-container')[0];
-		let autoplayEnabled = autoplayButton && autoplayButton.getAttribute('aria-pressed') === 'true';
-		if (autoplayEnabled) {
-			autoplayButton.click();
-		}
-	}
-	toggleAutoplayIfOn();
-	setInterval(toggleAutoplayIfOn, 10000);
-})();

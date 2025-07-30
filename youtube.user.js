@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube
 // @description	youtube userscript, including youtube shorts redirect
-// @version	2025.07.30.1
+// @version	2025.07.30.2
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube.user.js
@@ -36,15 +36,13 @@ window.onload = function() {
 
 function() {
 	'use strict';
-
 	function toggleAutoplayIfOn() {
-		let autoplayButton = document.getElementsByClassName('ytp-autonav-toggle-button')[0];
+		let autoplayButton = document.getElementsByClassName('ytm-autonav-toggle-button-container')[0];
 		let autoplayEnabled = autoplayButton && autoplayButton.getAttribute('aria-checked') === 'true';
 		if (autoplayEnabled) {
 			autoplayButton.click();
 		}
 	}
-
 	toggleAutoplayIfOn();
 	setInterval(toggleAutoplayIfOn, 10000);
 })();

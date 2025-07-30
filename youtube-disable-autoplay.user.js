@@ -1,26 +1,32 @@
 // ==UserScript==
 // @name	youtube-disable-autoplay
 // @description	disable youtube auto-play
-// @version	2025.07.30.1
+// @version	2025.07.30.2
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-disable-autoplay.user.js
 // @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-disable-autoplay.user.js
 // @match	*://*.youtube.com/*
-// @run-at	document-start
+// @run-at	document-end
 // @grant	bitlogStyle
 // ==/UserScript==
 
-const autoplayButton = () => document.querySelector('.ytp-autonav-toggle-button')
-const initializeAutoplayDisabler = () => {
-	if (!location.pathname.startsWith('/watch')) return
-	if (!autoplayButton()) { return setTimeout(() => { initializeAutoplayDisabler() }, 1000) }
-	fightAutoplay()
-}
-const fightAutoplay = () => {
-	setTimeout(() => {
-		if (autoplayButton().getAttribute('aria-checked') === 'true') { autoplayButton().click() }
-		fightAutoplay()
-	}, 500)
-}
+const Attempts_To_Turn_Off = 10;
+(function() {
+	'use strict';
+	let autoplayToggle = document.getElementsByClassName('ytp-autonav-toggle-button')[0];
+	let attempts = 1;
 
+	let checkInterval = setInterval(function() {
+		function turnAutoplayOff() {
+			if (autoplayToggle.getAttribute('aria-checked') === "true" && attempts < Attempts_To_Turn_Off) {
+				autoplayToggle.click();
+			}
+			else {
+				clearInterval(checkInterval);
+			}
+		}
+		turnAutoplayOff();
+		attempts ++;
+	}, 200);
+})();

@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name	reddit
+// @name	reddit-redirect-old
 // @description	redirect reddit to old interface
-// @version	2025.07.14.1
+// @version	2025.07.30.1
 // @author	bitlog
 // @namespace	bitlogUserscripts
-// @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit.user.js
-// @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit.user.js
+// @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit-redirect-old.user.js
+// @updateURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit-redirect-old.user.js
 // @match	*://*.reddit.com/*
 // @match	*://*.redd.it/*
 // @run-at	document-start

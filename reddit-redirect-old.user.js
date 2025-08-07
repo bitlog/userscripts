@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	reddit-redirect-old
 // @description	redirect reddit to old interface
-// @version	2025.07.30.1
+// @version	2025.08.07.1
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit-redirect-old.user.js
@@ -12,8 +12,29 @@
 // @grant	none
 // ==/UserScript==
 
-if (location.hostname === "www.reddit.com" && !location.pathname.match(/^\/media/i)) {
-	location.replace(location.protocol + "//old.reddit.com" + location.pathname + location.search + location.hash);
-} else if (location.hostname === "preview.redd.it") {
-	location.replace(location.protocol + "//i.redd.it" + location.pathname);
+function redditRedirect() {
+	if (window.location.hostname === "www.reddit.com" && !window.location.pathname.match(/^\/media/i)) {
+		window.location.replace(window.location.protocol + "//old.reddit.com" + window.location.pathname + window.location.search + window.location.hash);
+	} else if (window.location.hostname === "preview.redd.it") {
+		window.location.replace(window.location.protocol + "//i.redd.it" + window.location.pathname);
+	}
 }
+
+var oldHref = document.location.href;
+redditRedirect();
+window.onload = function() {
+	var bodyList = document.querySelector("body");
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (oldHref != document.location.href) {
+				oldHref = document.location.href;
+				redditRedirect();
+			}
+		});
+	});
+	var config = {
+		childList: true,
+		subtree: true
+	};
+	observer.observe(bodyList, config);
+};

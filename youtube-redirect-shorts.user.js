@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-redirect-shorts
 // @description	redirect youtube shorts
-// @version	2025.07.30.7
+// @version	2025.08.07.7
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-redirect-shorts.user.js
@@ -11,19 +11,21 @@
 // @grant	bitlogStyle
 // ==/UserScript==
 
-var oldHref = document.location.href;
-if (window.location.href.indexOf('youtube.com/shorts') > -1) {
-	window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+function youtubeRedirect() {
+	if (window.location.href.indexOf('youtube.com/shorts') > -1) {
+		window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+	}
 }
+
+var oldHref = document.location.href;
+youtubeRedirect();
 window.onload = function() {
-	var bodyList = document.querySelector("body")
+	var bodyList = document.querySelector("body");
 	var observer = new MutationObserver(function(mutations) {
 		mutations.forEach(function(mutation) {
 			if (oldHref != document.location.href) {
 				oldHref = document.location.href;
-				if (window.location.href.indexOf('youtube.com/shorts') > -1) {
-					window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
-				}
+				youtubeRedirect();
 			}
 		});
 	});

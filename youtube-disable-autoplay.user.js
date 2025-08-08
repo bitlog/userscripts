@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-disable-autoplay
 // @description	disable youtube auto-play
-// @version	2025.08.08.02
+// @version	2025.08.08.03
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-disable-autoplay.user.js
@@ -11,12 +11,12 @@
 // @grant	bitlogStyle
 // ==/UserScript==
 
-var disableAutoPlay = window.setInterval( function( window ) {
-	let button = window.document.querySelector( "button.ytm-autonav-toggle-button-container" ); // get the button
-	if ( button.getAttribute( "aria-label" ) == "Auto-play is on" ) {
-		button.click( ); // disable autoplay next if enabled
+var disableAutoPlay = window.setInterval(function(window) {
+	let button = window.document.querySelector("button.ytm-autonav-toggle-button-container");
+	if (button.getAttribute("aria-label") == "Auto-play is on") {
+		button.click();
 	}
-	if ( button.getAttribute( "aria-label" ) == "Auto-play is off" ) {
-		window.clearInterval( disableAutoPlay ); // end script once done
+	if (button.getAttribute("aria-label") == "Auto-play is off") {
+		window.clearInterval(disableAutoPlay);
 	}
-}, 1024, window );
+}, 1024, window);

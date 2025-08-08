@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-redirect-shorts
 // @description	redirect youtube shorts
-// @version	2025.08.07.01
+// @version	2025.08.08.01
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-redirect-shorts.user.js
@@ -12,8 +12,8 @@
 // ==/UserScript==
 
 function youtubeRedirect() {
-	if (window.location.href.indexOf('youtube.com/shorts') > -1) {
-		window.location.replace(window.location.toString().replace('/shorts/', '/watch?v='));
+	if (window.location.href.indexOf("youtube.com/shorts") > -1) {
+		window.location.replace(window.location.toString().replace("/shorts/", "/watch?v="));
 	}
 }
 

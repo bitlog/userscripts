@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-disable-autoplay
 // @description	disable youtube auto-play
-// @version	2025.07.30.3
+// @version	2025.08.08.01
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-disable-autoplay.user.js
@@ -11,49 +11,12 @@
 // @grant	bitlogStyle
 // ==/UserScript==
 
-function eachNode(rootNode, callback) {
-	if (!callback) {
-		const nodes = [];
-		eachNode(rootNode, function (node) {
-			nodes.push(node);
-		});
-		return nodes;
+var var_interval_id = window.setInterval( function( window ) {
+	let a = window.document.querySelector( "button.ytp-button[data-tooltip-target-id='ytp-autonav-toggle-button']" ); // get the button
+	if ( a.getAttribute( "aria-label" ) == "Autoplay is on" ) {
+		a.click( ); // disable autoplay next if enabled
 	}
-
-	if (false === callback(rootNode)) {
-		return false;
+	if ( a.getAttribute( "aria-label" ) == "Autoplay is off" ) {
+		window.clearInterval( var_interval_id ); // end script once done
 	}
-
-	if (rootNode.hasChildNodes()) {
-		const nodes = rootNode.childNodes;
-		for (let i = 0, l = nodes.length; i < l; ++i) {
-			if (false === eachNode(nodes[i], callback)) {
-				return;
-			}
-		}
-	}
-}
-
-(function () {
-	"use strict";
-
-	const observer = new MutationObserver(function (mutationList) {
-		for (const mutation of mutationList) {
-			for (const addedNode of mutation.addedNodes) {
-				// recurses through all child nodes as well
-				eachNode(addedNode, function (node) {
-					node.nodeName.toLowerCase() == "div" &&
-					node.classList.contains("ytp-autonav-toggle-button") &&
-					node.getAttribute("aria-checked") == "true" &&
-					node.click();
-				});
-			}
-		}
-	});
-
-	observer.observe(document, {
-		childList: true,
-		subtree: true,
-		attributes: true,
-	});
-})();
+}, 1024, window );

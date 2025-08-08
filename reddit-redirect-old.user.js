@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	reddit-redirect-old
 // @description	redirect reddit to old interface
-// @version	2025.08.07.1
+// @version	2025.08.07.01
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/reddit-redirect-old.user.js

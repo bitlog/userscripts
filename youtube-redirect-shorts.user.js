@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-redirect-shorts
 // @description	redirect youtube shorts
-// @version	2025.08.07.7
+// @version	2025.08.07.01
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-redirect-shorts.user.js

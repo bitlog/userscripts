@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-disable-automute
 // @description	disable youtube auto-mute
-// @version	2025.08.08.01
+// @version	2025.08.08.02
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-disable-automute.user.js
@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 var disableAutoMute = window.setInterval(function(window) {
-	let button = window.document.querySelector("button.unmute");
+	let button = window.document.querySelector("button.ytp-unmute");
 	if (button.getAttribute("style") != "display: none;") {
 		button.click();
 		window.clearInterval(disableAutoMute);

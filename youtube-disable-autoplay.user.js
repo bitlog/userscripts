@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-disable-autoplay
 // @description	disable youtube auto-play
-// @version	2025.08.13.01
+// @version	2025.08.14.01
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-disable-autoplay.user.js
@@ -19,4 +19,4 @@ var disableAutoPlay = window.setInterval(function(window) {
 	//if (button.getAttribute("aria-label") == "Auto-play is off") {
 	//	window.clearInterval(disableAutoPlay);
 	//}
-}, 5000, window);
+}, 2000, window);

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	youtube-redirect-lists
 // @description	redirect youtube lists
-// @version	2025.10.03.01
+// @version	2025.10.03.02
 // @author	bitlog
 // @namespace	bitlogUserscripts
 // @downloadURL	https://raw.githubusercontent.com/bitlog/userscripts/refs/heads/main/youtube-redirect-lists.user.js
@@ -15,7 +15,7 @@ function youtubeRedirect() {
 	if (window.location.href.indexOf("youtube.com/watch") > -1) {
 		var queryString = window.location.search;
 		var urlParams = new URLSearchParams(queryString);
-		if (urlParams.has('v') && ((urlParams.has('list') || urlParams.has('start_radio'))) {
+		if (urlParams.has('v') && urlParams.has('list')) {
 			window.location.replace(window.location.origin + window.location.pathname + "?v=" + urlParams.get('v'));
 		}
 	}
